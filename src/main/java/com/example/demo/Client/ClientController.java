@@ -33,7 +33,7 @@ public class ClientController {
         clientService.delete_client(clientId);
         System.out.println("Client supprimé");//testing purposes
     }
-    @PostMapping //Post
+    @PostMapping(path = "/addClient") //Post
     public void registerClient(@RequestBody Client client){
         clientService.addNewClient(client);
     }

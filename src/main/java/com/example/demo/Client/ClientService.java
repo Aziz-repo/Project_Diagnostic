@@ -2,12 +2,11 @@ package com.example.demo.Client;
 
 import java.util.List;
 import java.util.Objects;
-
 import javax.transaction.Transactional;
-
+import com.example.demo.Exeption.ApiRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.lang.IllegalStateException;
+
 
 
 
@@ -33,7 +32,7 @@ public class ClientService {
     public void delete_client(Long clientId){
         boolean exists = clientRepositrory.existsById(clientId);
         if(!exists){
-            throw new IllegalStateException("Ce client n'existe pas");
+            throw new ApiRequestException("Ce client n'existe pas");
         }
         clientRepositrory.deleteById(clientId);
     }
@@ -46,7 +45,7 @@ public class ClientService {
         List<Client> TelephoneList = clientRepositrory.findClientBytelephone(client.gettelephone());
         List<Client> CinList = clientRepositrory.findClientBycin(client.getcin());
         if(!EmailList.isEmpty() || !TelephoneList.isEmpty() || !CinList.isEmpty()){
-            throw new IllegalStateException("Donnée(s) déja utilisée(s).Veuillez de verifier votre données!!");
+            throw new ApiRequestException("Donnée(s) déja utilisée(s)! Veuillez de vérifier vos donnéé(s)!!");
         }
         clientRepositrory.save(client);
         System.out.println(client);
@@ -63,7 +62,7 @@ public class ClientService {
      * @param telephone Object phone number
      */
     public void updateClient(Long clientId,String nom, String prenom, Integer cin, String voiture, String email, Integer telephone){
-        Client client= clientRepositrory.findById(clientId).orElseThrow(()->  new IllegalStateException("Client n'existe pas!!"));
+        Client client= clientRepositrory.findById(clientId).orElseThrow(()->  new ApiRequestException("Ce client n'existe pas!!"));
         if(nom != null && !Objects.equals(client.getNom(), nom) && nom.length() > 0){
             client.setNom(nom);
         }
