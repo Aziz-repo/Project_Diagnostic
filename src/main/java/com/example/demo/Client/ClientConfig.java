@@ -7,6 +7,7 @@ import java.util.List;
 import com.example.demo.Rendez_vous.Rendez_vous;
 
 
+
 @Configuration
 public class ClientConfig {
     @Bean
@@ -16,10 +17,14 @@ public class ClientConfig {
         return args ->{
             Client client1 = new Client("Hassene", "Aziz", 7237768,"azizhassen69@gmail.com",54346342,List.of(rendez_vous1));
             Client client2 = new Client("Hassene", "Aicha", 7237769,"aichahassen@gmail.com",54346340,List.of(rendez_vous2));
+
             repositrory.saveAll(List.of(client1,client2));
+            
+
         };
     
         
     }
+
      
 }

@@ -19,7 +19,7 @@ import com.example.demo.Voiture.Voiture;
 public class Rendez_vous {
     @Id
     @SequenceGenerator(
-        name = "redez_vous_sequence",
+        name = "rendez_vous_sequence",
         sequenceName = "rendez_vous_sequence",
         allocationSize = 1
 
@@ -37,10 +37,9 @@ public class Rendez_vous {
     public Rendez_vous(){
 
     }
-    public Rendez_vous(Voiture voiture, LocalDate date, Client client){
+    public Rendez_vous(Voiture voiture, LocalDate date){
         this.voiture = voiture;
         this.date = date;
-        this.client = client;
     }
     //getters
     public Long getid(){return this.r_id;}
