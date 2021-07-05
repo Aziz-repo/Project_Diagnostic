@@ -72,9 +72,6 @@ public class ClientService {
         if(cin != null && !Objects.equals(client.getcin(), cin)){
             client.setcin(cin);
         }
-        if(voiture != null && !Objects.equals(client.getvoiture(), voiture) && voiture.length() > 0){
-            client.setvoiture(voiture);
-        }
         if(email != null && !Objects.equals(client.getEmail(), nom) && email.length() > 0){
             client.setEmail(email);
         }
