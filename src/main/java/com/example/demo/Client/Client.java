@@ -3,14 +3,16 @@ package com.example.demo.Client;
 
 
 import java.io.Serializable;
-import javax.persistence.Embedded;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import com.example.demo.Voiture.Voiture;
+import com.example.demo.Rendez_vous.Rendez_vous;
+import java.util.List;
 
 
 @Entity
@@ -30,53 +32,53 @@ public class Client implements Serializable {
     private String nom;
     private String prenom;
     private int cin;
-    private Voiture voiture;
     private String email;
     private int telephone;
+    @OneToMany(mappedBy = "client")
+    private List<Rendez_vous> rendez_vous;
 
     public Client(){
 
     }
-    public Client(Long id, String nom, String prenom, int cin, Voiture voiture,String email, int telephone){
+    public Client(Long id, String nom, String prenom, int cin ,String email, int telephone, List<Rendez_vous> rendez_vous){
         this.id = id;
         this.nom = nom;
         this.cin = cin;
         this.prenom = prenom;
-        this.voiture = voiture;
         this.email = email;
         this.telephone = telephone;
+        this.rendez_vous = rendez_vous;
+    
     }
-    public Client(String nom, String prenom, int cin, Voiture voiture,String email, int telephone){
+    public Client(String nom, String prenom, int cin,String email, int telephone, List<Rendez_vous> rendez_vous){
         this.nom = nom;
         this.cin = cin;
         this.prenom = prenom;
-        this.voiture = voiture;
         this.email = email;
         this.telephone = telephone;
+        this.rendez_vous = rendez_vous;
     }
     //getters
     public Long getId(){return this.id;}
     public String getNom(){return this.nom;}
     public String getPrenom(){return this.prenom;}
     public int getcin(){return this.cin;}
-    @Embedded
-    public Voiture getvoiture(){return this.voiture;}
     public String getEmail(){return this.email;}
     public int gettelephone(){return this.telephone;}
-    
+    public List<Rendez_vous> getrendezvous(){return this.rendez_vous;}
     //setters
     public void setId(Long id){this.id = id;}
     public void setNom(String nom){this.nom = nom;}
     public void setPrenom(String prenom){this.prenom = prenom;}
     public void setcin(Integer cin){this.cin = cin;}
-    public void setvoiture(Voiture voiture){this.voiture = voiture;}
     public void setEmail(String email){this.email = email;}
     public void settelephone(Integer telephone){this.telephone = telephone;}
+    public void setrendezvous(List<Rendez_vous> rendez_vous){this.rendez_vous = rendez_vous;}
     
     //Printing
     @Override
     public String toString(){
-        return "Client{"+ "nom = "+ nom + " prenom = "+ prenom +" cin = " + cin + " voiture = " + voiture + " email = "+ email + " N° telephone = " + telephone + '}';
+        return "Client{"+ "nom = "+ nom + " prenom = "+ prenom +" cin = " + cin + " email = "+ email + " N° telephone = " + telephone + '}';
 
 
     }

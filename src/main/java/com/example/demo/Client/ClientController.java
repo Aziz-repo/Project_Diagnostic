@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
-@RequestMapping(path="api/v1/FirstProject")
+@RequestMapping(path="api/v1/FirstProject/client")
 public class ClientController {
     
     private final ClientService clientService;
@@ -39,12 +39,12 @@ public class ClientController {
     }
     @PutMapping(path = "{clientId}") //Put
     public void updateClient(@PathVariable("clientId") Long clientId,
-    @RequestParam(required = false) String nom,
-    @RequestParam(required = false) String prenom,
-    @RequestParam(required = false) Integer cin,
-    @RequestParam(required = false) String voiture,
-    @RequestParam(required = false) String email,
-    @RequestParam(required = false) Integer telephone){
+                            @RequestParam(required = false) String nom,
+                            @RequestParam(required = false) String prenom,
+                            @RequestParam(required = false) Integer cin,
+                            @RequestParam(required = false) String voiture,
+                            @RequestParam(required = false) String email,
+                            @RequestParam(required = false) Integer telephone){
         clientService.updateClient(clientId,nom,prenom,cin,voiture,email,telephone);
         
     
