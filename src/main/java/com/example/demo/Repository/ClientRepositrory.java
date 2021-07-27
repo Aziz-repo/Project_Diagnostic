@@ -1,6 +1,9 @@
-package com.example.demo.Client;
+package com.example.demo.Repository;
 
 import java.util.List;
+
+import com.example.demo.model.Client;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,11 +18,18 @@ public interface ClientRepositrory extends JpaRepository<Client,Long> {
     * Fetch client by identity card
     * @param cin number of the identity card
     */
-   List<Client> findClientBycin(Integer cin);
+   List<Client> findClientBycin(Long cin);
    /**
     * Fetch client by phone number
     * @param telephone
     */
-   List<Client> findClientBytelephone(Integer telephone);
+   List<Client> findClientBytelephone(Long telephone);
+   /**
+    * Fetch client by email and password
+    * @param Login
+    * @param password
+    * @return a list of clients objects
+    */
+   List<Client> findClientByEmailAndPassword(String Login, String password);
     
 }

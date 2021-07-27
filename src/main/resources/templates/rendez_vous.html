@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+ <html lang="en" xmlns:th="http://www.thymeleaf.org">
+ <head>
+     <link rel="stylesheet" href="#" th:href="@{css/rendez_vous.css}">
+     <title>Rendez Vous</title>
+ </head>
+
+ <body>
+    <div class="panel-container">
+		
+        <form class="left" th:action="@{/rendez_vous}" th:object="${rendez_vous}" method="POST">
+        
+            <h2>Rendez_vous</h2>
+            
+            <h3>Nom</h3>
+            <input type="text"  th:field="*{client.nom}"/> 
+            
+            <h3>E-mail</h3>
+            <input type="text"  th:field="*{client.email}" required/> 
+            
+            <h3>Telephone</h3>
+            <input type="text"  th:field="*{client.telephone}" required/>
+            
+            <h3>Marque</h3>
+            <input type="text" th:field="*{marque}" required/>
+
+            <h3>Modele</h3>
+            <input type="text"  th:field="*{modele}" required/>
+
+            <h3>Date</h3>
+            <input type="text" th:field="*{date}" placeholder="jj-mm-aa" required/>
+        
+   
+
+            <button type="submit">Confirm Reservation</button>
+		
+       
+		</form>
+        <div class="right"></div>
+    </div>
+ </body>
+ </html>

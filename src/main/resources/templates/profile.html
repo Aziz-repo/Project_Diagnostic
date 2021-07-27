@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+ <html lang="en" xmlns:th="http://www.thymeleaf.org" >
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet"  th:href="@{/css/profile.css}">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+        <title>Profile</title>
+        
+    </head>
+    <!--a nav bar for the header-->
+    <header>
+        <div th:insert="@{header}"></div>
+    </header>
+
+    <body>
+        <div class="profile-card">
+            <div class="image-container">
+                <img th:src="@{/Images/images.png}" style="width:60%">
+                
+            </div>
+            <div class="title">
+                <h2>&nbsp;DIAGNOSTIC</h2>
+            </div>
+            <div class="main-container">
+                <p><b><i class="fas fa-house-user info"></i>Credentials</b></p>
+                <p></b><i class="fas fa-signature info"></i>Full Name&nbsp;&nbsp;<p th:text="${client.nom}"></p></p>
+                <P><i class="fas fa-phone info"></i> Telephone&nbsp;&nbsp;<p th:text="${#strings.toString(client.telephone)}"></p></p>
+                <p><i class="fas fa-envelope info"></i> Email&nbsp;&nbsp;<p th:text="${client.email}"></p></p>
+                <hr>
+                <p><b><i class="fas fa-calendar-check info"></i><a href="#">Rendez Vous</a></b></p>
+            </div>
+        </div>
+        
+    </body>

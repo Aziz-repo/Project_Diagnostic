@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+ <html lang="en" xmlns:th="http://www.thymeleaf.org" >
+    <head>
+        <link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                    
+                        <div class="navbar-header">
+                            <button class="navbar-toggle" data-target="#mobile_menu" data-toggle="collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                            <a href="#" class="navbar-brand">DIAGNOSTIC</a>
+                        </div>
+                    
+                        <div class="navbar-collapse collapse" id="mobile_menu">
+                            <ul class="nav navbar-nav">
+                                <li><a herf="accuiel.html" th:herf="@{/}">Accueil</a></li>
+                                <li><a href="#">Services</a></li>
+                                <li><a href="#">References</a></li>
+                                <li><a href="#" th:href="@{/profile}">Profile</a></li>
+                                <li><a href="contact.html" th:href="@{/contact}">Contact</a></li>
+                                <li><a href="rendez_vou.html" th:href="@{/rendez_vous}">Rendez-vous</a></li>
+                            </ul>
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    <form action="" class="navbar-form">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input type="search" name="search" id="" placeholder="Recherche..." class="form-control">
+                                                <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </li>
+                            </ul>
+                        
+                            <ul class="nav navbar-nav navbar-right">
+                               <li><a href="#" th:href="@{/log_out}"><span class="glyphicon glyphicon-log-out">Logout</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </body>
+ </html>

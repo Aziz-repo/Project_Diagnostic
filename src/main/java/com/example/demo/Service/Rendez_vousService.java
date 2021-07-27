@@ -1,19 +1,26 @@
-package com.example.demo.Rendez_vous;
+package com.example.demo.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 import com.example.demo.Exeption.ApiRequestException;
-import com.example.demo.Voiture.Voiture;
+import com.example.demo.Repository.Rendez_vousRepository;
+import com.example.demo.model.Rendez_vous;
+import java.util.Optional;
 
+
+@Service
 public class Rendez_vousService {
     private final Rendez_vousRepository rendez_vousRepository;
 
     @Autowired
     public Rendez_vousService(Rendez_vousRepository rendez_vousRepository){
             this.rendez_vousRepository = rendez_vousRepository;
+    }
+    public Optional<Rendez_vous> findById(Long id) {
+        return rendez_vousRepository.findById(id);
     }
     public List<Rendez_vous>get_allRendezVous(){
         return rendez_vousRepository.findAll();
@@ -31,11 +38,15 @@ public class Rendez_vousService {
             throw new ApiRequestException("déja reservé");
         }
         rendez_vousRepository.save(rendez_vous);
+        
     }
-    public void updatRendezVous(Long RendezVousId, Voiture voiture, LocalDate date){
+    public void updatRendezVous(Long RendezVousId, String marque, String modele, String date){
         Rendez_vous rendez_vous = rendez_vousRepository.findById(RendezVousId).orElseThrow(()-> new ApiRequestException("Ce rendez_vous n'existe pas!!"));
-        if(voiture != null && voiture.equals(rendez_vous.getvoiture())){
-            rendez_vous.setvoiture(voiture);
+        if(marque != null && !Objects.equals(marque,rendez_vous.getmarque()) && marque.length() > 0) {
+            rendez_vous.setmarque(marque);
+        }
+        if(modele != null && !Objects.equals(modele,rendez_vous.getmodele()) && modele.length() > 0) {
+            rendez_vous.setmodele(modele);
         }
         if(date != null && !Objects.equals(date,rendez_vous.getdate())){
             rendez_vous.setdate(date);

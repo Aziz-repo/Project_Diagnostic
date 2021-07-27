@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+ <html lang="en" xmlns:th="http://www.thymeleaf.org" >
+  <head>
+    <link rel="stylesheet" href="#" th:href="@{css/sign_up.css}">
+    <title>Sign Up</title>
+  </head>
+  
+  <div class="login-container">
+    <section class="login" id="login">
+      <header>
+        <h2>DIAGNOSTIC</h2>
+        <h4>Sign Up</h4>
+      </header>
+      <form class="login-form" th:action="@{/signup}" th:object="${client}" method="post">
+        <input type="text" th:field="*{nom}" class="login-input" placeholder="Nom" required autofocus/>
+        <input type="text" th:field="*{prenom}" class="login-input" placeholder="Prenom" required/>
+        <input type="text" th:field="*{cin}" class="login-input" placeholder="Carte Identite" required/>
+        <input type="email" th:field="*{email}" class="login-input" placeholder="E-mail" required/>
+        <input id="password" type="password" th:field="*{password}" class="login-input" placeholder="Password" required/>
+        <input id="confirmPassword" type="password" class="login-input" placeholder="Confirm Password" required/>
+        <input type="text" th:field="*{telephone}" class="login-input" placeholder="Telephone" required/>
+        <div class="submit-container">
+          <button type="submit" class="login-button">SIGN UP</button>
+        </div>
+
+      </form>
+      <!--Verify if the password matches or not-->
+      <script>
+        document.querySelector('.login-button').onclick = function() {
+          var password = document.querySelector('#password').value;
+              confirmPassword = document.querySelector('#confirmPassword').value;
+
+              if(password != confirmPassword) {
+                    alert("Password didn't match.Try again!");
+                    return false;
+              }
+        }
+      </script>
+      
+    </section>
+ 
+  </div>
+ </html>

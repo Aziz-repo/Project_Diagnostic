@@ -1,4 +1,4 @@
-package com.example.demo.Voiture;
+package com.example.demo.model;
 
 import javax.persistence.Embeddable;
 
@@ -15,6 +15,10 @@ public class Voiture {
         this.modele = modele;
         this.cate_grise = carte_grise;
 
+    }
+    public Voiture(String marque, String modele) {
+        this.marque = marque;
+        this.modele = modele;
     }
     //getters
     public String getmarque(){return this.marque;}

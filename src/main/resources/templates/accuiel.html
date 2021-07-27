@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+ <html lang="en" xmlns:th="http://www.thymeleaf.org" >
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <title>Accueil</title>
+        <script
+			  src="//code.jquery.com/jquery-3.6.0.min.js"
+			  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+			  crossorigin="anonymous">
+        </script>
+    </head>
+    <header>
+        <div th:insert="@{header}"></div>
+    </header>
+
+
+    <!--Body with slideshow-->
+    <body>
+        <head>
+            <link rel="stylesheet" href="#" th:href="@{css/accuiel.css}">
+        </head>
+        <section>
+            <div class="slideshow">
+                <div class="slideshow-item">
+                    <img src ="" th:src="@{/Images/images.jpeg}" alt="">
+                    <div class="slideshow-item-text">
+                        <h5>Fuck My Life</h5>
+                    </div>
+                </div>
+                <div class="slideshow-item">
+                    <img src="" th:src="@{/Images/banner.jpg}" alt="">
+                    <div class="slideshow-item-text">
+                        <h5>Fuck My Life2</h5>
+                    </div>
+                </div>
+                <div class="slideshow-item">
+                    <img src="" th:src="@{/Images/kali.png}" alt="">
+                    <div class="slideshow-item-text">
+                        <h5>Fuck My Life3</h5>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+    
+    
+    
+        <footer>
+            <div th:insert="@{footer}"></div>
+        </footer>
+            
+           
+    
+ </html>  
