@@ -23,7 +23,7 @@ public interface ClientRepositrory extends JpaRepository<Client,Long> {
     * Fetch client by phone number
     * @param telephone
     */
-   List<Client> findClientBytelephone(Long telephone);
+   List<Client> findClientBytelephone(String telephone);
    /**
     * Fetch client by email and password
     * @param Login

@@ -40,7 +40,7 @@ public class Rendez_vousService {
         rendez_vousRepository.save(rendez_vous);
         
     }
-    public void updatRendezVous(Long RendezVousId, String marque, String modele, String date){
+    public void updatRendezVous(Long RendezVousId, String marque, String modele, String date, String nom, String telephone, String email){
         Rendez_vous rendez_vous = rendez_vousRepository.findById(RendezVousId).orElseThrow(()-> new ApiRequestException("Ce rendez_vous n'existe pas!!"));
         if(marque != null && !Objects.equals(marque,rendez_vous.getmarque()) && marque.length() > 0) {
             rendez_vous.setmarque(marque);
@@ -50,6 +50,15 @@ public class Rendez_vousService {
         }
         if(date != null && !Objects.equals(date,rendez_vous.getdate())){
             rendez_vous.setdate(date);
+        }
+        if(nom != null && !Objects.equals(nom, rendez_vous.getnom()) && nom.length() > 0) {
+            rendez_vous.setnom(nom);
+        }
+        if(email != null && !Objects.equals(email, rendez_vous.getemail()) && nom.length() > 0) {
+            rendez_vous.setemail(email);
+        }
+        if(telephone != null && !Objects.equals(telephone, rendez_vous.gettelephone()) && telephone.length() > 0) {
+            rendez_vous.settelephone(telephone);
         }
     }
 }

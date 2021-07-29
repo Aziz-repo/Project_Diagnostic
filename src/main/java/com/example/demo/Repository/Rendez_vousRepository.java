@@ -9,5 +9,6 @@ import com.example.demo.model.Rendez_vous;
 public interface Rendez_vousRepository extends JpaRepository <Rendez_vous,Long> {
     
     List<Rendez_vous> findBydate(String date);
+    List<Rendez_vous> findRendez_vousByEmailAndTelephone(String email,String telephone);
     
 }

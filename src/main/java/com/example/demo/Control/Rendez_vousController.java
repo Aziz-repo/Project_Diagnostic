@@ -1,7 +1,6 @@
 package com.example.demo.Control;
 
 import com.example.demo.Service.Rendez_vousService;
-import com.example.demo.model.Client;
 import com.example.demo.model.Rendez_vous;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,13 +29,12 @@ public class Rendez_vousController {
     @PostMapping(value ="/rendez_vous")
     public String rendez_vous_page(@ModelAttribute("rendez_vous") Rendez_vous rendez_vous) {
         rendez_vousService.addNewRendezVous(rendez_vous); 
+        this.rendez_vous = rendez_vous;
         return "accuiel2";
     } 
     @GetMapping(value = "/rendez_vous")
     public String reservation(Model model) {
-        Client client = new Client();
-        model.addAttribute("client", client);
-        Rendez_vous rendez_vous = new Rendez_vous(client);
+        Rendez_vous rendez_vous = new Rendez_vous();
         model.addAttribute("rendez_vous", rendez_vous);
         return "rendez_vous";
     }

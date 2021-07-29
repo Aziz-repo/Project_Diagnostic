@@ -43,10 +43,13 @@ public class Rendez_vousRestController{
     @PutMapping(path = "{rendez_vousId}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
         public void updatRendezVous(@PathVariable("rendez_vousId") Long rendez_vousId,
+                                    @RequestParam(required = false) String nom,
+                                    @RequestParam(required = false) String telephone,
+                                    @RequestParam(required = false) String email,
                                     @RequestParam(required = false) String marque,
                                     @RequestParam(required = false) String modele,
                                     @RequestParam(required = false) String date){
-            rendez_vousService.updatRendezVous(rendez_vousId,marque,modele, date);
+            rendez_vousService.updatRendezVous(rendez_vousId,nom,telephone,email,marque,modele, date);
                 
     }
 

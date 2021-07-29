@@ -60,6 +60,7 @@ public class ClientController {
     public String signin(@ModelAttribute("client") Client client) {
         if(clientService.authenticate(client.getEmail(), client.getpassword())) {
             loggedIn = true;
+            this.client = client;
             return "accuiel2";
         }
         return "ERROR";
@@ -77,6 +78,7 @@ public class ClientController {
     @PostMapping(value ="/signup")
     public String doSignUp(@ModelAttribute("client") Client client) {
        clientService.addNewClient(client);
+       this.client = client;
        loggedIn = true;
        return "accuiel2";
         
@@ -99,7 +101,7 @@ public class ClientController {
     }  
     @GetMapping(value = "/profile")
     public String profile(Model model) {
-        model.addAttribute("client", client);
+        model.addAttribute("client", this.client);
         return "profile";
 
     }

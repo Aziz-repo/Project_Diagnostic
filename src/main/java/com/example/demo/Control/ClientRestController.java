@@ -53,7 +53,7 @@ public class ClientRestController {
                             @RequestParam(required = false) String voiture,
                             @RequestParam(required = false) String email,
                             @RequestParam(required = false) String password,
-                            @RequestParam(required = false) Long telephone){
+                            @RequestParam(required = false) String telephone){
         clientService.updateClient(clientId,nom,prenom,cin,voiture,email,password,telephone);
         
     

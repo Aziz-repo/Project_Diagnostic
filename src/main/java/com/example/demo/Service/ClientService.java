@@ -1,14 +1,17 @@
 package com.example.demo.Service;
 
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
-
 import javax.transaction.Transactional;
+
 import com.example.demo.Exeption.ApiRequestException;
 import com.example.demo.Repository.ClientRepositrory;
+import com.example.demo.Repository.Rendez_vousRepository;
 import com.example.demo.model.Client;
+import com.example.demo.model.Rendez_vous;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -19,12 +22,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class ClientService {
     private final ClientRepositrory clientRepositrory;
-   
+    private final Rendez_vousRepository rendez_vousRepository;
 
 
     @Autowired
-    public ClientService(ClientRepositrory clientRepositrory){
+    public ClientService(ClientRepositrory clientRepositrory,Rendez_vousRepository rendez_vousRepository){
         this.clientRepositrory = clientRepositrory;
+        this.rendez_vousRepository = rendez_vousRepository;
+        
     }
     /**
      * Fetch all the Objects
@@ -92,7 +97,7 @@ public class ClientService {
      * @param telephone Object phone number
      */
     @Transactional
-    public void updateClient(Long clientId,String nom, String prenom, Long cin, String voiture,String password, String email, Long telephone){
+    public void updateClient(Long clientId,String nom, String prenom, Long cin, String voiture,String password, String email, String telephone){
         Client client= clientRepositrory.findById(clientId).orElseThrow(()->  new ApiRequestException("Ce client n'existe pas!!"));
         if(nom != null && !Objects.equals(client.getNom(), nom) && nom.length() > 0){
             client.setNom(nom);
@@ -109,7 +114,7 @@ public class ClientService {
         if(password != null && !Objects.equals(client.getpassword(),password) && password.length() > 0) {
             client.setpassword(password);
         }
-        if(telephone != null && !Objects.equals(client.gettelephone(), telephone)){
+        if(telephone != null && !Objects.equals(client.gettelephone(), telephone) && telephone.length() > 0){
             client.settelephone(telephone);
         }
     }
@@ -122,9 +127,21 @@ public class ClientService {
             return bCryptPasswordEncoder.matches(password, encrypted_password);
         }
         return false;
-   
-            
+    } 
+    public boolean isReminded(Client client) {
+        Rendez_vous rendez_vous;
+        List<Rendez_vous> rendez_vous_List = rendez_vousRepository.findRendez_vousByEmailAndTelephone(client.getEmail(), client.gettelephone());
+        if(rendez_vous_List.isEmpty()){
+            return false;
+        }else{
+            rendez_vous = rendez_vous_List.get(0);
+            if(rendez_vous.getdate() == LocalDate.now().toString()) {
+                return true;
+            }
+            return false;
+        }
         
+    
     }
     
      
