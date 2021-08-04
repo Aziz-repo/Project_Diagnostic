@@ -24,7 +24,7 @@
             </div>
             <div class="main-container">
                 <p><b><i class="fas fa-house-user info"></i>Credentials</b></p>
-                <p></b><i class="fas fa-signature info"></i>Full Name&nbsp;&nbsp;<p th:text="${client.nom}"></p></p>
+                <p></b><i class="fas fa-signature info"></i>Full Name&nbsp;&nbsp;<p th:text="${client.nom} +' '+ ${client.prenom}"></p></p>
                 <!--TODO: FIX THE TELEPHONE FILED-->
                 <!--<p><i class="fas fa-phone info"></i> Telephone&nbsp;&nbsp;<p th:text="${client.telephone}"></p></p>-->
                 <p><i class="fas fa-envelope info"></i> Email&nbsp;&nbsp;<p th:text="${client.email}"></p></p>

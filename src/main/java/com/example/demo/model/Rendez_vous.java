@@ -29,12 +29,13 @@ public class Rendez_vous implements Serializable {
         generator = "rendez_vous_sequence"
         )
     private Long id;
-    String marque;
-    String modele;
-    String email;
-    String nom;
-    String telephone;
+    private String marque;
+    private String modele;
+    private String email;
+    private String nom;
+    private String telephone;
     private String date;
+    private int nbrReservation;
     
     //constructors
     public Rendez_vous(){
@@ -65,6 +66,7 @@ public class Rendez_vous implements Serializable {
     public String getnom(){return this.nom;}
     public String getemail(){return this.email;}
     public String gettelephone(){return this.telephone;}
+    public int getnbrReservation(){return this.nbrReservation;}
     //setters
     public void setid(Long r_id){this.id = r_id;}
     public void setdate(String date){this.date = date;}
@@ -73,6 +75,7 @@ public class Rendez_vous implements Serializable {
     public void setnom(String nom){this.nom = nom;}
     public void setemail(String email){this.email = email;}
     public void settelephone(String telephone){this.telephone = telephone;}
+    public void setnbrResrvation(int nbrReservation){this.nbrReservation = nbrReservation;}
     
 
     //printing 

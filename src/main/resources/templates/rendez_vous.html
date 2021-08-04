@@ -28,13 +28,34 @@
             <input type="text"  th:field="*{modele}" required/>
 
             <h3>Date</h3>
-            <input type="text" th:field="*{date}" placeholder="jj-mm-aa" required/>
+            <input type="text" id="date" th:field="*{date}" placeholder="aaaa-mm-jj" required/>
+            
         
    
 
-            <button type="submit">Confirm Reservation</button>
-		
-       
+            <button type="submit" id="button">Confirm Reservation</button>
+            <!--Verify the Date Form to match the backend form-->
+            <script>
+                document.querySelector('#button').onclick = function () {
+                    var date = document.querySelector('#date').value;
+                    var regEx = /^\d{4}-\d{2}-\d{2}$/;
+                    if(!date.match(regEx)){
+                        alert("date format is wrong! Please use the aaaa-mm-jj format!");
+                        return false;
+                    }
+                    var d = new Date(date);
+                    var dNum = d.getTime();
+                    if(!dNum && dNum != 0){
+                        alert("Please fill the reservation date!");
+                        return false;
+                    }
+                    if(!d.toISOString().slice(0,10) == date) {
+                        alert("The date is invalid!!")
+                        return false;
+                    }
+
+                }
+            </script>
 		</form>
         <div class="right"></div>
     </div>

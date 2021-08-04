@@ -16,7 +16,7 @@ public class Rendez_vousService {
     private final Rendez_vousRepository rendez_vousRepository;
 
     @Autowired
-    public Rendez_vousService(Rendez_vousRepository rendez_vousRepository){
+    public Rendez_vousService(Rendez_vousRepository rendez_vousRepository, int nbrReservation){
             this.rendez_vousRepository = rendez_vousRepository;
     }
     public Optional<Rendez_vous> findById(Long id) {
@@ -32,10 +32,11 @@ public class Rendez_vousService {
         }
         rendez_vousRepository.deleteById(rendez_vousId);
     }
+    //reservation will not accure if the limite number of reservation is achieved
     public void addNewRendezVous(Rendez_vous rendez_vous){
-        List<Rendez_vous> rendez_vousdate = rendez_vousRepository.findBydate(rendez_vous.getdate());
-        if(!rendez_vousdate.isEmpty()){
-            throw new ApiRequestException("déja reservé");
+        List<Rendez_vous> rendez_vousdate = rendez_vousRepository.findAll();
+        if(rendez_vousdate.size() == rendez_vous.getnbrReservation()){
+            throw new ApiRequestException("Full");
         }
         rendez_vousRepository.save(rendez_vous);
         
